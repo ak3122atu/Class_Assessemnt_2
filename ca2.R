@@ -518,7 +518,11 @@ cvResults <- suppressWarnings(CVlm(data = sleep_data,
 
 plot(linearMod)
 confint(linearMod)
-summary(linearMod)  
+summary(linearMod) 
+
+#Here's how we can predict a single value from the model. 
+#In this simple example, I'm creating a dataframe with a single value in it 
+#which contains all the variables.
  
 df <- data.frame(lm = c(100), sr = c(120), hr = c(20), sh = c(10), rr = c(30), t = c(40),
                  rem = c(120))
