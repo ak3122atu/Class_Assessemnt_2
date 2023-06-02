@@ -474,7 +474,7 @@ testing_data <- sleep_data[-sample, ]
 #Now we can build the linear model using the training data.
 
 linearMod <- lm(sl ~ sr + 
-                  rr + t + lm + 
+                rr + t + lm + 
                   + rem + sh + 
                   hr, data = training_data)
 linearMod
@@ -516,4 +516,21 @@ cvResults <- suppressWarnings(CVlm(data = sleep_data,
                                    printit = FALSE, 
                                    main = "Small symbols are predicted values while bigger ones are actuals."));
 
+plot(linearMod)
+confint(linearMod)
+summary(linearMod)  
+ 
+df <- data.frame(lm = c(100), sr = c(120), hr = c(20), sh = c(10), rr = c(30), t = c(40),
+                 rem = c(120))
+predicted_sl <- predict(linearMod, df)
+predicted_sl
 
+df <- data.frame(lm = c(120), sr = c(100), hr = c(2), sh = c(4), rr = c(2), t = c(6),
+                 rem = c(70))
+predicted_sl <- predict(linearMod, df)
+predicted_sl
+
+df <- data.frame(lm = c(30), sr = c(56), hr = c(100), sh = c(500), rr = c(300), t = c(80),
+                 rem = c(600))
+predicted_sl <- predict(linearMod, df)
+predicted_sl
